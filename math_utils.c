@@ -28,3 +28,19 @@ struct fraction subtract_fractions(struct fraction *a, struct fraction *b){
 
 	return c;
 }
+
+struct fraction add_fractions(struct fraction *a, struct fraction *b){
+	int new_num_a = 0, new_num_b = 0, new_den = 0;
+	int new_num = 0, gcd = 0;
+	new_num_a += ((*a).numerator * ((*b).denominator));
+	new_den += ((*a).denominator * ((*b).denominator));
+	new_num_b += ((*b).numerator * ((*a).denominator));
+
+	new_num += (new_num_a + new_num_b);
+	gcd = find_gcd(new_num, new_den);
+	divide_to_lowest_terms(&new_num, &new_den, gcd);
+	struct fraction c = {.numerator = new_num, .denominator = new_den};
+
+	return c;
+}
+

@@ -44,3 +44,13 @@ struct fraction add_fractions(struct fraction *a, struct fraction *b){
 	return c;
 }
 
+struct fraction multiply_fractions(struct fraction *a, struct fraction *b){
+	int new_num = 0, new_den = 0, gcd;
+	new_num += ((*a).numerator * (*b).numerator);
+	new_den += ((*a).denominator * (*b).denominator);
+	gcd = find_gcd(new_num, new_den);
+	divide_to_lowest_terms(&new_num, &new_den, gcd);
+
+	return ((struct fraction){.numerator = new_num, .denominator = new_den});
+}
+

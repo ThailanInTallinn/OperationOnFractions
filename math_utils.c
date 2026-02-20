@@ -54,3 +54,9 @@ struct fraction multiply_fractions(struct fraction *a, struct fraction *b){
 	return ((struct fraction){.numerator = new_num, .denominator = new_den});
 }
 
+struct fraction divide_fractions(struct fraction *a, struct fraction *b){
+    	int new_num = 0, new_den = 0;
+	new_num += (*a).numerator * (*b).denominator;
+	new_den += (*a).denominator * (*b).numerator;
+	return ((struct fraction){.numerator = new_num, .denominator = new_den});
+}
